@@ -14,7 +14,7 @@ import { FormsModule } from '@angular/forms';
 export class CoursesComponent {
   courselist: Course[] = [];
   filteredCourses: Course[] = [];
-  filteredValue: string = "";
+  filterValue: string = "";
 
   constructor(private courseservice: CourseService) {}
 
@@ -26,6 +26,9 @@ export class CoursesComponent {
   }
 
   applyFilter(): void {
-    
+    this.filteredCourses = this.courselist.filter((course) =>
+    course.code.toLowerCase().includes(this.filterValue.toLowerCase()) ||
+    course.coursename.toLowerCase().includes(this.filterValue.toLowerCase())
+    );
   }
 }

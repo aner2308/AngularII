@@ -1,7 +1,11 @@
-<p>courses works!</p>
+<h2>Kurser i Webbutvecklingsprogrammet på MIUN.</h2>
 
 <label for="filter">Filtrera kurser:</label>
 <input type="text" id="filter" [(ngModel)]="filterValue" (input)="applyFilter()">
+
+@if(filteredCourses.length === 0) {
+    <p>Inga kurser hittades...</p>
+}
 
 <table id="courseTable">
     <tr>
@@ -10,7 +14,7 @@
         <th>Progression</th>
         <th>Länk</th>
     </tr>
-    <tr *ngFor="let course of courselist">
+    <tr *ngFor="let course of filteredCourses">
         <td> {{course.code}} </td>
         <td> {{course.coursename}} </td>
         <td> {{course.progression}} </td>
