@@ -1,8 +1,16 @@
 <p>courses works!</p>
 
-<ul>
-    <li *ngFor="let course of courselist">
-        {{course.code}} {{course.coursename}} {{course.progression}}
-        <a [href]="course.syllabus" target="_blank">Länk till kurs</a>
-    </li>
-</ul>
+<table id="courseTable">
+    <tr>
+        <th>Kurskod</th>
+        <th>Kursnamn</th>
+        <th>Progression</th>
+        <th>Länk</th>
+    </tr>
+    <tr *ngFor="let course of courselist">
+        <td> {{course.code}} </td>
+        <td> {{course.coursename}} </td>
+        <td> {{course.progression}} </td>
+        <td> <a [href]="course.syllabus" target="_blank">Länk till kurs</a> </td>
+    </tr>
+</table>
