@@ -1,0 +1,45 @@
+table {
+    border-collapse: collapse;
+    width: 90%;
+    margin: 20px auto;
+    border: 1px solid;
+
+    td {
+        border-left: 1px solid;
+    }
+    
+    th {
+        border-bottom: 1px solid black;
+    }
+
+    td,
+    th {
+        padding: 8px;
+    }
+
+    tr:nth-child(even) {
+        background-color: #fcf0e5;
+    }
+
+    tr a {
+        text-decoration: none;
+        color: black;
+    }
+
+    tr a:hover {
+        cursor: pointer;
+        color: purple;
+    }
+
+    th {
+        padding-top: 12px;
+        padding-bottom: 12px;
+        text-align: left;
+        background-color: #d87229;
+        color: white;
+    }
+
+    th:hover {
+        cursor: pointer;
+    }
+}

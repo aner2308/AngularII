@@ -1,12 +1,15 @@
 <h2>Kurser i Webbutvecklingsprogrammet på MIUN.</h2>
 
+<!-- Sökruta för kurser -->
 <label for="filter">Filtrera kurser:</label>
 <input type="text" id="filter" [(ngModel)]="filterValue" (input)="applyFilter()">
 
+<!-- meddelande om inga kurser matchar sökning -->
 @if(filteredCourses.length === 0) {
     <p>Inga kurser hittades...</p>
 }
 
+<!-- Tabell som skriverr ut kurserna -->
 <table id="courseTable">
     <tr>
         <th id="code" (click)="sortBy('code')">Kurskod</th>

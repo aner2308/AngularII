@@ -11,6 +11,7 @@ import { FormsModule } from '@angular/forms';
   templateUrl: './courses.component.html',
   styleUrl: './courses.component.scss'
 })
+
 export class CoursesComponent {
   courselist: Course[] = [];
   filteredCourses: Course[] = [];
@@ -19,6 +20,7 @@ export class CoursesComponent {
 
   constructor(private courseservice: CourseService) { }
 
+  //Hämtar kurser vid inladdning av sidan
   ngOnInit() {
     this.courseservice.getCourses().subscribe(data => {
       this.courselist = data;
@@ -26,6 +28,7 @@ export class CoursesComponent {
     })
   }
 
+  //Jämför hämtade kursernas kursnamn/kurskod med texten i sökrutan
   applyFilter(): void {
     this.filteredCourses = this.courselist.filter((course) =>
       course.code.toLowerCase().includes(this.filterValue.toLowerCase()) ||
@@ -33,10 +36,16 @@ export class CoursesComponent {
     );
   }
 
+  //Sorterar kurserna vid klick på rubrik. Ger sortingBy värdet av den klickade rubriken. 
   sortBy(sort: string): void {
+
+    //Om sortingBy matchar rubriken kommer den att vända ordning på sorteringen
     if (this.sortingBy === sort) {
       this.filteredCourses.reverse();
     } else {
+
+      //Om sortingBy inte matckar den klickade rubriken sorterar den i fallande ordning.
+      //SortingBy får också värdet av rubriken.
       this.sortingBy = sort;
       this.filteredCourses.sort((a, b) => {
         if (sort === "code") {
@@ -46,6 +55,8 @@ export class CoursesComponent {
         } else if (sort === "progression") {
           return a.progression.localeCompare(b.progression);
         }
+
+        //Om det skulle bli något knas returneras 0 istälet för null.
         return 0;
       });
     }
