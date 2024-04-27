@@ -1,5 +1,8 @@
 <p>courses works!</p>
 
+<label for="filter">Filtrera kurser:</label>
+<input type="text" id="filter" [(ngModel)]="filterValue" (input)="applyFilter()">
+
 <table id="courseTable">
     <tr>
         <th>Kurskod</th>
@@ -11,6 +14,6 @@
         <td> {{course.code}} </td>
         <td> {{course.coursename}} </td>
         <td> {{course.progression}} </td>
-        <td> <a [href]="course.syllabus" target="_blank">Länk till kurs</a> </td>
+        <td> <a [href]="course.syllabus" target="_blank">läs mer</a> </td>
     </tr>
 </table>
