@@ -15,8 +15,9 @@ export class CoursesComponent {
   courselist: Course[] = [];
   filteredCourses: Course[] = [];
   filterValue: string = "";
+  sortingBy: string = "";
 
-  constructor(private courseservice: CourseService) {}
+  constructor(private courseservice: CourseService) { }
 
   ngOnInit() {
     this.courseservice.getCourses().subscribe(data => {
@@ -27,8 +28,26 @@ export class CoursesComponent {
 
   applyFilter(): void {
     this.filteredCourses = this.courselist.filter((course) =>
-    course.code.toLowerCase().includes(this.filterValue.toLowerCase()) ||
-    course.coursename.toLowerCase().includes(this.filterValue.toLowerCase())
+      course.code.toLowerCase().includes(this.filterValue.toLowerCase()) ||
+      course.coursename.toLowerCase().includes(this.filterValue.toLowerCase())
     );
+  }
+
+  sortBy(sort: string): void {
+    if (this.sortingBy === sort) {
+      this.filteredCourses.reverse();
+    } else {
+      this.sortingBy = sort;
+      this.filteredCourses.sort((a, b) => {
+        if (sort === "code") {
+          return a.code.localeCompare(b.code);
+        } else if (sort === "coursename") {
+          return a.coursename.localeCompare(b.coursename);
+        } else if (sort === "progression") {
+          return a.progression.localeCompare(b.progression);
+        }
+        return 0;
+      });
+    }
   }
 }

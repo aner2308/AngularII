@@ -9,9 +9,9 @@
 
 <table id="courseTable">
     <tr>
-        <th>Kurskod</th>
-        <th>Kursnamn</th>
-        <th>Progression</th>
+        <th id="code" (click)="sortBy('code')">Kurskod</th>
+        <th id="coursename" (click)="sortBy('coursename')">Kursnamn</th>
+        <th id="progression" (click)="sortBy('progression')">Progression</th>
         <th>Länk</th>
     </tr>
     <tr *ngFor="let course of filteredCourses">
