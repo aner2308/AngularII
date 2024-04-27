@@ -1,0 +1,8 @@
+<p>courses works!</p>
+
+<ul>
+    <li *ngFor="let course of courselist">
+        {{course.code}} {{course.coursename}} {{course.progression}}
+        <a [href]="course.syllabus" target="_blank">Länk till kurs</a>
+    </li>
+</ul>
