@@ -72,7 +72,6 @@ table {
     }
 
     tr a {
-        text-decoration: none;
         color: black;
         transition: color 0.3s; // Lade till en smidig färgövergång vid hover
     }
@@ -125,7 +124,7 @@ table {
     th,
     tr {
         padding: 8px; 
-        min-width: 40px;
+        min-width: 50px;
         font-size: 0.9em;
     }
 }
