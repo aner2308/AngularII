@@ -1,26 +1,30 @@
-<h2>Kurser i Webbutvecklingsprogrammet på MIUN.</h2>
+<div id="container">
+    <h2>Webbutveckling - Ramschema.</h2>
 
-<!-- Sökruta för kurser -->
-<label for="filter">Filtrera kurser:</label>
-<input type="text" id="filter" [(ngModel)]="filterValue" (input)="applyFilter()">
+    <!-- Sökruta för kurser -->
+    <label for="filter">Filtrera kurser:</label>
+    <input type="text" id="filter" [(ngModel)]="filterValue" (input)="applyFilter()" placeholder="Sök efter kurskod/namn">
 
-<!-- meddelande om inga kurser matchar sökning -->
-@if(filteredCourses.length === 0) {
+    <!-- meddelande om inga kurser matchar sökning -->
+    @if(filteredCourses.length === 0) {
     <p>Inga kurser hittades...</p>
-}
+    }
 
-<!-- Tabell som skriverr ut kurserna -->
-<table id="courseTable">
-    <tr>
-        <th id="code" (click)="sortBy('code')">Kurskod</th>
-        <th id="coursename" (click)="sortBy('coursename')">Kursnamn</th>
-        <th id="progression" (click)="sortBy('progression')">Progression</th>
-        <th>Länk</th>
-    </tr>
-    <tr *ngFor="let course of filteredCourses">
-        <td> {{course.code}} </td>
-        <td> {{course.coursename}} </td>
-        <td> {{course.progression}} </td>
-        <td> <a [href]="course.syllabus" target="_blank">läs mer</a> </td>
-    </tr>
-</table>
+    <p id="scrollMessage">Scrolla tabellen i sidled för att se alla kolumner.</p>
+
+    <!-- Tabell som skriverr ut kurserna -->
+    <table id="courseTable">
+        <tr>
+            <th id="code" (click)="sortBy('code')">Kurskod</th>
+            <th id="coursename" (click)="sortBy('coursename')">Kursnamn</th>
+            <th id="progression" (click)="sortBy('progression')">Progression</th>
+            <th>Länk</th>
+        </tr>
+        <tr *ngFor="let course of filteredCourses">
+            <td> {{course.code}} </td>
+            <td> {{course.coursename}} </td>
+            <td> {{course.progression}} </td>
+            <td> <a [href]="course.syllabus" target="_blank">läs mer</a> </td>
+        </tr>
+    </table>
+</div>
